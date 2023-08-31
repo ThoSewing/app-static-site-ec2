@@ -16,7 +16,7 @@ variable "vpc_sn_pub_az1_cidr" {
 }
 
 
-# COMPUTE VARS CUSTOM VALUES
+# COMPUTE VARS CUSTOM VALUE
 
 variable "ec2_lt_name" {
     type    = string
