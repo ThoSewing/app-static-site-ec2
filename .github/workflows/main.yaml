@@ -3,18 +3,20 @@ name: IaC Lifecycle
 on:
   push:
     branches:
-    - main
+    - develop
+    paths:
+    - 'terraform/**'
 
 jobs:
-
   job-Terraform_Apply:
+    environment: 'thomas-cp1'
     runs-on: ubuntu-latest
  
     steps:
 
     - name: Step 01 - Terraform Install
       env :
-        TERRAFORM_VERSION: "1.4.0"
+        TERRAFORM_VERSION: "1.5.6"
       run : |
         tf_version=$TERRAFORM_VERSION
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
@@ -42,8 +44,8 @@ jobs:
       run : terraform -chdir=./terraform validate
 
     - name: Step 07 - Terraform Plan
-      # run : terraform -chdir=./terraform plan -input=false -out tfplan
-      run : terraform -chdir=./terraform plan -input=false -destroy -out tfplan
+      run : terraform -chdir=./terraform plan -input=false -out tfplan
+      # run : terraform -chdir=./terraform plan -input=false -destroy -out tfplan
 
     - name: Step 08 - Terraform Apply
       run : terraform -chdir=./terraform apply -auto-approve -input=false tfplan
