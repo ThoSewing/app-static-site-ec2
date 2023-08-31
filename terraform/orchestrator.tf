@@ -1,15 +1,19 @@
-module "network" {
-  source = "./modules/network"
+# MODULES ORCHESTRATOR
 
-  network_cidr_block           = "10.0.0.0/16"
-  network_enable_dns_hostnames = true
-  subnet_pub_cidr_block        = "10.0.1.0/24"
+module "network" {
+    source               = "./modules/network"
+    vpc_cidr             = "10.0.0.0/16"
+    vpc_az1              = "${var.vpc_az1}"
+    vpc_sn_pub_az1_cidr  = "${var.vpc_sn_pub_az1_cidr}"
 }
 
 module "compute" {
-  source = "./modules/compute"
-
-  vpc_security_group_ids = module.network.sg_public_id
-  subnet_pub_id          = module.network.subnet_pub_id
-  instance_user_data     = base64encode(data.template_file.user_data.rendered)
+    source                   = "./modules/compute"
+    ec2_lt_name              = "${var.ec2_lt_name}"
+    ec2_lt_ami               = "${var.ec2_lt_ami}"
+    ec2_lt_instance_type     = "${var.ec2_lt_instance_type}"
+    vpc_cidr                 = "${var.vpc_cidr}"
+    vpc_id                   = "${module.network.vpc_id}"
+    vpc_sn_pub_az1_id        = "${module.network.vpc_sn_pub_az1_id}"
+    vpc_sg_pub_id            = "${module.network.vpc_sg_pub_id}"
 }
