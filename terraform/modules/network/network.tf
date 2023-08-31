@@ -31,6 +31,7 @@ resource "aws_route_table_association" "rt_public_To_sn_public" {
 resource "aws_security_group" "sg_public" {
   name   = var.sg_public_name
   vpc_id = aws_vpc.vpc.id
+}
 
   egress {
     from_port   = 0
