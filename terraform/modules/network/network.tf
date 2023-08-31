@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 resource "aws_vpc" "vpc" {
   cidr_block           = var.network_cidr_block
   enable_dns_hostnames = var.network_enable_dns_hostnames
@@ -62,7 +61,7 @@ resource "aws_security_group" "sg_public" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-=======
+
 # RESOURCE: VPC
 
 resource "aws_vpc" "vpc" {
@@ -135,5 +134,4 @@ resource "aws_security_group" "vpc_sg_pub" {
         protocol    = "${var.vpc_sg_protocol_tcp}"
         cidr_blocks = ["${var.vpc_cidr_all}"]
     }
->>>>>>> b07495bdd64f5b8dc372f7ad6fdada84d61b4195
 }

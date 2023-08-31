@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 variable "network_cidr_block" {
   type        = string
   default     = "10.0.0.0/16"
@@ -33,7 +32,8 @@ variable "sg_public_name" {
   type        = string
   default     = "sg_public"
   description = "Public Security Group Name"
-=======
+}
+
 # NETWORK VARS DEFAULT VALUES
 
 variable "vpc_cidr" {
@@ -92,5 +92,5 @@ variable "vpc_sg_protocol_any" {
 variable "vpc_sg_protocol_tcp" {
     type    = string
     default = "tcp"
->>>>>>> b07495bdd64f5b8dc372f7ad6fdada84d61b4195
+
 }

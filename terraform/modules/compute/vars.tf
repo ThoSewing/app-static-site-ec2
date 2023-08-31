@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 variable "instance_ami" {
   description = "AMI ID"
   default     = "ami-051f7e7f6c2f40dc1"
@@ -37,7 +36,7 @@ variable "vpc_security_group_ids" {
   default     = ""
   type        = string
 }
-=======
+
 # NETWORK VARS DEFAULT VALUES (INPUT IS REQUIRED BECAUSE NO DEFAULT IS DEFINED)
 
 variable "vpc_id" {}
@@ -62,4 +61,4 @@ variable "ec2_lt_instance_type" {
     type    = string
     default = "t2.micro"
 }
->>>>>>> b07495bdd64f5b8dc372f7ad6fdada84d61b4195
+
