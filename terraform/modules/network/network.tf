@@ -32,6 +32,7 @@ resource "aws_security_group" "vpc_sg_pub" {
   name   = var.sg_public_name
   vpc_id = aws_vpc.vpc.id
 
+
   egress {
     from_port   = 0
     to_port     = 0
