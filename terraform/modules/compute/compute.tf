@@ -2,11 +2,6 @@
 
 data "template_file" "user_data" {
     template = "${file("./modules/compute/scripts/user_data.sh")}"
-    vars = {
-        access_key_id     = "${var.access_key_id}"
-        secret_access_key = "${var.secret_access_key}"
-        session_token     = "${var.session_token}"
-    }
 }
 
 resource "aws_launch_template" "ec2_lt" {

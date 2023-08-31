@@ -7,7 +7,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 }
 
-resource "aws_subnet" "sn_public" {
+resource "aws_subnet" "vpc_sn_pub_az1_id" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.subnet_pub_cidr_block
   map_public_ip_on_launch = var.subnet_map_public_ip_on_launch
@@ -28,7 +28,7 @@ resource "aws_route_table_association" "rt_public_To_sn_public" {
   route_table_id = aws_route_table.rt_public.id
 }
 
-resource "aws_security_group" "sg_public" {
+resource "aws_security_group" "vpc_sg_pub" {
   name   = var.sg_public_name
   vpc_id = aws_vpc.vpc.id
 
